@@ -1,0 +1,10 @@
+﻿<h1>These are My favorite Hobbies in a unorder list:</h1>
+
+<ul>
+	@{
+		foreach (string hobbies in ViewBag.MyHobbies)
+		{
+			<li>@hobbies</li>
+		}
+	}
+</ul>

@@ -1,0 +1,10 @@
+﻿<h1>These are My favorite Cities:</h1>
+
+<ol>
+	@{
+		foreach (string cities in ViewBag.MyCities)
+		{
+			<li>@cities</li>
+		}
+	}
+</ol>
