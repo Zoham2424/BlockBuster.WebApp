@@ -1,6 +1,11 @@
 using System.Diagnostics;
 using BlockBuster.WebApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System;
+using BlockBuster;
+
 
 namespace BlockBuster.WebApp.Controllers
 {
@@ -28,7 +33,10 @@ namespace BlockBuster.WebApp.Controllers
         {
             return View();
         }
-
+        public IActionResult Movie()
+        {
+            return View();
+        }
         public IActionResult Colors()
         {
             ViewBag.MyColors = _myColors;
@@ -45,7 +53,11 @@ namespace BlockBuster.WebApp.Controllers
             ViewBag.MyHobbies = _myHobbies;
             return View();
         }
-
+        public IActionResult Movies()
+        {
+            var movieList = BasicFunctions.GetAllMoviesWithDetails();
+            return View(movieList);
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

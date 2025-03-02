@@ -1,0 +1,3 @@
+{
+  "ConnectionString": "Server=sql.neit.edu,4500;User Id=SE407_BlockBuster;Password=Bl0ckBu$t3r;Database=SE407_BlockBuster;TrustServerCertificate = true"
+}
