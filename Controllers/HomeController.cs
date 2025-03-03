@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System;
 using BlockBuster;
+using BlockBuster.Models;
 
 
 namespace BlockBuster.WebApp.Controllers
