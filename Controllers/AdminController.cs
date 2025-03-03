@@ -1,4 +1,5 @@
 ﻿using BlockBuster.Models;
+using BlockBuster.WebApp.Helpers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -23,10 +24,8 @@ namespace BlockBuster.WebApp.Controllers
         // GET: AdminController/Create
         public ActionResult Create()
         {
-            var genres = BasicFunctions.GetAllGenres()
-                .OrderBy(g => g.GenreDescr)
-                .ToDictionary(g => g.GenreId, g => g.GenreDescr);
-            ViewBag.GenreId = genres;
+            ViewBag.DirectorId = DropDownFormatter.FormatDirectors();
+            ViewBag.DirectorId = DropDownFormatter.FormatGenres();
             return View();
         }
 
@@ -81,21 +80,12 @@ namespace BlockBuster.WebApp.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(Movie movieToEdit)
         {
             try
             {
-                BasicFunctions
-                    .UpdateMovie
-                    (
-                        id,
-                        collection[nameof(Movie.Title)],
-                        int.Parse(collection[nameof(Movie.ReleaseYear)]),
-                        BasicFunctions.GetDirectorById(int.Parse(collection["DirectorId"])),
-                        BasicFunctions.GetGenreById(int.Parse(collection["GenreId"]))
-                    );
-
-                return RedirectToAction(nameof(Details));
+                BasicFunctions.EditMovie(movieToEdit);
+                return RedirectToAction("Admin", " Home");
             }
             catch
             {
@@ -103,6 +93,7 @@ namespace BlockBuster.WebApp.Controllers
             }
         }
 
+    
 
         // GET: AdminController/Delete/5
         public ActionResult Delete(int id)
