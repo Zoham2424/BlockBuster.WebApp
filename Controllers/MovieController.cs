@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BlockBuster.WebApp.Controllers
 {
-    public class BookController : Controller
+    public class MovieController : Controller
     {
         // GET: BookController
         public ActionResult Index()
