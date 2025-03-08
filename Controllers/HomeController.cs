@@ -59,6 +59,8 @@ namespace BlockBuster.WebApp.Controllers
             var movieList = BasicFunctions.GetAllMoviesWithDetails();
             return View(movieList);
         }
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
